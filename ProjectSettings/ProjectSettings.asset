@@ -616,6 +616,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 1
     UNet: 1
   luminIcon:
     m_Name: 
@@ -629,10 +630,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: ae74a8a2-c02c-455e-95cd-310b3a116374
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: SGJ-2020
+  organizationId: the_smax
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
