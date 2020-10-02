@@ -9,10 +9,9 @@ public class MovePlayer : MonoBehaviour
     private float _h;
     private float _v;
     private Rigidbody2D rb;
-    private bool _gotObject;
+    public bool _gotObject;
     private GameObject objectgrabbed;
-    private bool _startTimer=false;
-    public float timer = 3f;
+    public bool onContactObject = false;
     // Start is called before the first frame update
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
@@ -25,21 +24,24 @@ public class MovePlayer : MonoBehaviour
         _v=Input.GetAxis("Vertical");
         rb.velocity = new Vector2 (_h,_v) * speed;
 
-        if(Input.GetButton("Use") && _gotObject){
+//pick n drop
+        if (onContactObject && Input.GetButtonDown("Use") && !_gotObject){
+            onContactObject=false;
+            objectgrabbed.gameObject.GetComponent<BoxCollider2D>().enabled=false;
+            objectgrabbed.transform.SetParent(gameObject.transform);
+            objectgrabbed.transform.position = gameObject.transform.position;
+            _gotObject=true;
+        }
+        else if(!onContactObject &&Input.GetButtonDown("Use") && _gotObject){
             _gotObject = false;
             objectgrabbed.GetComponent<BoxCollider2D>().enabled = true;
             objectgrabbed.transform.parent = null;
-            objectgrabbed.transform.position += new Vector3 (_h*5 , _v*5,0);
+            objectgrabbed=null;
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D other){
-        if(other.gameObject.GetComponent<BoxCollider2D>() && Input.GetButton("Use") && !_gotObject){
-            other.gameObject.GetComponent<BoxCollider2D>().enabled=false;
-            other.transform.SetParent(gameObject.transform);
-            other.transform.position = gameObject.transform.position + new Vector3(0,0,1);
-            _gotObject=true;
-            objectgrabbed=other.gameObject;
-        }
+    public void OnTriggerEnter2D(Collider2D other){
+        onContactObject=true;
+        objectgrabbed=other.gameObject;
     }
 }
