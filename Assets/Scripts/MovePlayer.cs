@@ -10,8 +10,7 @@ public class MovePlayer : MonoBehaviour
     private float _v;
     private Rigidbody2D rb;
     public bool _gotObject;
-    private GameObject objectgrabbed;
-    public bool onContactObject = false;
+    public GameObject objectgrabbed;
     // Start is called before the first frame update
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
@@ -25,23 +24,31 @@ public class MovePlayer : MonoBehaviour
         rb.velocity = new Vector2 (_h,_v) * speed;
 
 //pick n drop
-        if (onContactObject && Input.GetButtonDown("Use") && !_gotObject){
-            onContactObject=false;
+        if (Input.GetButtonDown("Use") && !_gotObject && objectgrabbed!=null){
             objectgrabbed.gameObject.GetComponent<BoxCollider2D>().enabled=false;
             objectgrabbed.transform.SetParent(gameObject.transform);
             objectgrabbed.transform.position = gameObject.transform.position;
             _gotObject=true;
         }
-        else if(!onContactObject &&Input.GetButtonDown("Use") && _gotObject){
-            _gotObject = false;
+        else if(Input.GetButtonDown("Use") && _gotObject){
             objectgrabbed.GetComponent<BoxCollider2D>().enabled = true;
             objectgrabbed.transform.parent = null;
             objectgrabbed=null;
+            _gotObject = false;
+        }
+        if(_gotObject && objectgrabbed==null){
+            _gotObject= !_gotObject;
         }
     }
 
     public void OnTriggerEnter2D(Collider2D other){
-        onContactObject=true;
-        objectgrabbed=other.gameObject;
+        if(other.gameObject.tag == "Obstacle"){
+            objectgrabbed = other.gameObject;
+        }
+    }
+    public void OnTriggerExit2D(Collider2D other){
+        if(!Input.GetButtonDown("Use") && !_gotObject){
+            objectgrabbed=null;
+        }
     }
 }
