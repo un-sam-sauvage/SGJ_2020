@@ -40,10 +40,10 @@ public void ConditionAnd(){
                 }
             }
             if(nbConditionGood == gameObject.transform.childCount){
-                door.SetActive(false);
+                DoorOpen(door);
             }
             else{
-                door.SetActive(true);
+                DoorClose(door);
             }
         }
 }
@@ -52,38 +52,44 @@ public void ConditionOrExclusive(){
     nbConditionGood=0;
     bool playOnce=true;
     for(int i=0; i<gameObject.transform.childCount;i++){
-        if(gameObject.transform.GetChild(i).GetComponent<DetectKeys>()){
-            bool condition ;
-            condition = gameObject.transform.GetChild(i).GetComponent<DetectKeys>().condition;
-            if(condition){
-                nbConditionGood++;
-            }
-            else{
-                door.SetActive(true);
-                door2.SetActive(true);
-            }
+        bool condition ;
+        condition = gameObject.transform.GetChild(i).GetComponent<DetectKeys>().condition;
+        if(condition){
+            nbConditionGood++;
+        }
+        else{
+            DoorClose(door);
+            DoorClose(door2);
         }
     }
     if(nbConditionGood == gameObject.transform.childCount){
         if(doorToOpen && playOnce){
             Debug.Log("porte1");
-            door.SetActive(false);
-            door2.SetActive(true);
+            DoorOpen(door);
+            DoorClose(door2);
             doorToOpen= !doorToOpen;
             playOnce = false;
             
         }
         else if (playOnce){
             Debug.Log("porte2");
-            door.SetActive(true);
-            door2.SetActive(false);
+            DoorClose(door);
+            DoorOpen(door2);
             doorToOpen= !doorToOpen;
             playOnce =false;
         }
     }
     else{
-        door.SetActive(true);
-        door2.SetActive(true);
+        DoorClose(door);
+        DoorClose(door2);
     }
+}
+public void DoorOpen( GameObject door){
+    door.GetComponent<SpriteRenderer>().color = new Color (door.GetComponent<SpriteRenderer>().color.r,door.GetComponent<SpriteRenderer>().color.g,door.GetComponent<SpriteRenderer>().color.b,.5f);
+    door.GetComponent<BoxCollider2D>().enabled = false;
+}
+public void DoorClose(GameObject door){
+    door.GetComponent<SpriteRenderer>().color = new Color (door.GetComponent<SpriteRenderer>().color.r,door.GetComponent<SpriteRenderer>().color.g,door.GetComponent<SpriteRenderer>().color.b,1);
+    door.GetComponent<BoxCollider2D>().enabled =true;
 }
 }
