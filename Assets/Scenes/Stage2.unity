@@ -1197,6 +1197,7 @@ MonoBehaviour:
   carryObject: 0
   doorOpen: 0
   currentLayer: {fileID: 0}
+  LowpassMaster: {fileID: 24100000, guid: 185f6d364f50d6243b981de44db235e9, type: 2}
 --- !u!4 &590046202
 Transform:
   m_ObjectHideFlags: 0

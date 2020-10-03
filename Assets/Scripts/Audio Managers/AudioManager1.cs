@@ -20,9 +20,12 @@ public class AudioManager1 : MonoBehaviour
     public bool carryObject;
     public int doorOpen;
     public AudioMixerSnapshot currentLayer;
+    public AudioMixer LowpassMaster;
+    private float lerpLP;
 
     private void Awake()
     {
+        LowpassMaster.SetFloat("lowpassMaster", 22000.00f);
         player = GameObject.FindGameObjectWithTag("Player");
         door = GameObject.FindGameObjectWithTag("Door");
 
@@ -30,7 +33,7 @@ public class AudioManager1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        layer1.TransitionTo(3f);
+        layer1.TransitionTo(1f);
         currentLayer = layer1;
     }
 
@@ -56,11 +59,15 @@ public class AudioManager1 : MonoBehaviour
 
         if (carryObject == true)
         {
-            carryObj.TransitionTo(0.2f);
+            //    carryObj.TransitionTo(0.2f);
+            lerpLP = Mathf.Lerp(22000f, 400f, 10000f);
+            LowpassMaster.SetFloat("lowpassMaster", lerpLP);
         }
         else
         {
-            currentLayer.TransitionTo(0.5f);
+            //   currentLayer.TransitionTo(0.5f);
+            lerpLP = Mathf.Lerp(400f, 22000f, 10000f);
+            LowpassMaster.SetFloat("lowpassMaster", lerpLP);
         }
 
     }

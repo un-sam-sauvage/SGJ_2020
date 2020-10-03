@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 
-public class AudioManager3 : MonoBehaviour
+public class AudioManager5 : MonoBehaviour
 {
     private GameObject player;
     private GameObject door;
     private GameObject door2;
     private GameObject door3;
+    private GameObject door4;
+    private GameObject door5;
     public AudioMixerSnapshot carryObj;
     public AudioMixerSnapshot layer1;
     public AudioMixerSnapshot layer2;
@@ -23,6 +25,8 @@ public class AudioManager3 : MonoBehaviour
     public int doorOpen;
     public int doorOpen2;
     public int doorOpen3;
+    public int doorOpen4;
+    public int doorOpen5;
     public AudioMixerSnapshot currentLayer;
     public AudioMixer LowpassMaster;
     private float lerpLP;
@@ -34,6 +38,8 @@ public class AudioManager3 : MonoBehaviour
         door = GameObject.FindGameObjectWithTag("Door");
         door2 = GameObject.FindGameObjectWithTag("Door2");
         door3 = GameObject.FindGameObjectWithTag("Door3");
+        door4 = GameObject.FindGameObjectWithTag("Door4");
+        door5 = GameObject.FindGameObjectWithTag("Door5");
 
     }
     // Start is called before the first frame update
@@ -53,10 +59,10 @@ public class AudioManager3 : MonoBehaviour
         //door 
         doorOpen = door.GetComponent<BoxCollider2D>().shapeCount;
 
-        if (doorOpen == 0 && doorOpen2 == 1 && doorOpen3 == 1)
+        if (doorOpen == 0) // && doorOpen2 == 1 && doorOpen3 == 1)
         {
-            layer3.TransitionTo(1f);
-            currentLayer = layer3;
+            layer2.TransitionTo(.1f);
+            currentLayer = layer2;
          }
 
 
@@ -65,16 +71,34 @@ public class AudioManager3 : MonoBehaviour
 
         if (doorOpen2 == 0)
         {
-            layer8.TransitionTo(1f);
-            currentLayer = layer5;
+            layer4.TransitionTo(.1f);
+            currentLayer = layer4;
         }
 
         //door 3 
         doorOpen3 = door3.GetComponent<BoxCollider2D>().shapeCount;
 
-        if (doorOpen3 == 0 && doorOpen2 == 1 && doorOpen == 1)
+        if (doorOpen3 == 0) // && doorOpen2 == 1 && doorOpen == 1)
         {
-            layer8.TransitionTo(1f);
+            layer5.TransitionTo(.1f);
+            currentLayer = layer5;
+        }
+
+        //door 4
+        doorOpen4 = door4.GetComponent<BoxCollider2D>().shapeCount;
+
+        if (doorOpen4 == 0) // && doorOpen2 == 1 && doorOpen == 1)
+        {
+            layer6.TransitionTo(.1f);
+            currentLayer = layer6;
+        }
+
+        //door 5
+        doorOpen5 = door5.GetComponent<BoxCollider2D>().shapeCount;
+
+        if (doorOpen5 == 0) // && doorOpen2 == 1 && doorOpen == 1)
+        {
+            layer8.TransitionTo(.1f);
             currentLayer = layer8;
         }
 
@@ -84,14 +108,14 @@ public class AudioManager3 : MonoBehaviour
 
         if (carryObject == true)
         {
-            //   carryObj.TransitionTo(0.2f);
+            // carryObj.TransitionTo(0.2f);
             lerpLP = Mathf.Lerp(22000f, 400f, 10000f);
             LowpassMaster.SetFloat("lowpassMaster", lerpLP);
         }
         else
         {
-            //   currentLayer.TransitionTo(0.5f);
-            lerpLP = Mathf.Lerp(400f, 22000f, 10000f);
+            //  currentLayer.TransitionTo(0.5f);
+           lerpLP = Mathf.Lerp(400f, 22000f, 10000f);
             LowpassMaster.SetFloat("lowpassMaster", lerpLP);
         }
 
