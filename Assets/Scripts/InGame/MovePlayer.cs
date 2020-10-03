@@ -9,7 +9,7 @@ public class MovePlayer : MonoBehaviour
     private Vector2 screenBounds;
     private float _h;
     private float _v;
-    public float objectWidth, objectHeight;
+    float objectWidth, objectHeight;
     private Rigidbody2D rb;
     public bool _gotObject;
     public GameObject objectgrabbed;

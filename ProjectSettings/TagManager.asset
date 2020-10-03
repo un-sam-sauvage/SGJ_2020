@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Obstacle
   - Door
+  - Door2
+  - Door3
   layers:
   - Default
   - TransparentFX

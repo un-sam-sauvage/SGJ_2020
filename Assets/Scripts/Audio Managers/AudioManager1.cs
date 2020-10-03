@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 
-public class AudioManager : MonoBehaviour
+public class AudioManager1 : MonoBehaviour
 {
     private GameObject player;
     private GameObject door;
@@ -25,29 +25,23 @@ public class AudioManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         door = GameObject.FindGameObjectWithTag("Door");
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        layer1.TransitionTo(1f);
+        layer1.TransitionTo(3f);
         currentLayer = layer1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        carryObject = player.GetComponent<MovePlayer>()._gotObject;
 
-        if (carryObject == true)
-        {
-            carryObj.TransitionTo(0.2f);
-        }
-        else
-        {
-            currentLayer.TransitionTo(0.2f);
-        }
+     
 
 
+        //door 
         doorOpen = door.GetComponent<BoxCollider2D>().shapeCount;
 
         if (doorOpen == 0)
@@ -56,6 +50,18 @@ public class AudioManager : MonoBehaviour
             currentLayer = layer8;
          }
 
+
+        //carry object
+        carryObject = player.GetComponent<MovePlayer>()._gotObject;
+
+        if (carryObject == true)
+        {
+            carryObj.TransitionTo(0.2f);
+        }
+        else
+        {
+            currentLayer.TransitionTo(0.5f);
+        }
 
     }
 }

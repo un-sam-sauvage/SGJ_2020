@@ -390,6 +390,11 @@ PrefabInstance:
       propertyPath: conditionAnd
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5838533119278797227, guid: 238bc9177dc76ba4a943d7a144f191c8,
+        type: 3}
+      propertyPath: door.Array.data[0]
+      value: 
+      objectReference: {fileID: 2638348715946646599}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 238bc9177dc76ba4a943d7a144f191c8, type: 3}
 --- !u!4 &115125627 stripped
@@ -1072,7 +1077,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 501139668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bbaeea3c45bd774a9479e8879ba9405, type: 3}
+  m_Script: {fileID: 11500000, guid: ba0924850a85190468a411bf1cc8143b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   carryObj: {fileID: -2921117471350341339, guid: 675eaf8f82c7f184399ce83a038f6b5b,
