@@ -1456,6 +1456,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: finish
       objectReference: {fileID: 0}
+    - target: {fileID: 6215756058282470345, guid: 39a60beaab72fc5449075537f6f19113,
+        type: 3}
+      propertyPath: sceneToLoad
+      value: Stage12
+      objectReference: {fileID: 0}
     - target: {fileID: 6215756058282470346, guid: 39a60beaab72fc5449075537f6f19113,
         type: 3}
       propertyPath: m_LocalPosition.x
