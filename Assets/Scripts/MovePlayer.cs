@@ -5,15 +5,19 @@ using UnityEngine;
 public class MovePlayer : MonoBehaviour
 {
     public float speed;
-
+    private Vector2 screenBounds;
     private float _h;
     private float _v;
+    public float objectWidth, objectHeight;
     private Rigidbody2D rb;
     public bool _gotObject;
     public GameObject objectgrabbed;
     // Start is called before the first frame update
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        objectWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x/2;
+        objectHeight = transform.GetComponent<SpriteRenderer>().bounds.size.y/2;
     }
 
     // Update is called once per frame
@@ -22,7 +26,10 @@ public class MovePlayer : MonoBehaviour
         _h=Input.GetAxis("Horizontal");
         _v=Input.GetAxis("Vertical");
         rb.velocity = new Vector2 (_h,_v) * speed;
-
+        Vector3 viewPos = transform.position;
+        viewPos.x= Mathf.Clamp(viewPos.x, screenBounds.x*-1+ objectWidth, screenBounds.x- objectWidth);
+        viewPos.y= Mathf.Clamp(viewPos.y, screenBounds.y*-1+ objectHeight, screenBounds.y- objectHeight);
+        transform.position= viewPos;
 //pick n drop
         if (Input.GetButtonDown("Use") && !_gotObject && objectgrabbed!=null){
             objectgrabbed.gameObject.GetComponent<BoxCollider2D>().enabled=false;

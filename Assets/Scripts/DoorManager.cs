@@ -6,6 +6,10 @@ public class DoorManager : MonoBehaviour
 {
     public GameObject door;
     int nbConditionGood;
+    public List<string> keys;
+    public List<string> keys2;
+
+
 void Update(){
 
 }
