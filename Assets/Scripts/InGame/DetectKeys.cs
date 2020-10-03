@@ -13,6 +13,7 @@ public class DetectKeys : MonoBehaviour
         if(other.tag !="Player" && playOnce){
             for(int i=0; i<GetComponentInParent<DoorManager>().keys.Count; i++){
                 if(other.name == GetComponentInParent<DoorManager>().keys[i]){
+                    GetComponentInParent<DoorManager>().index = i;
                     other.gameObject.transform.position = gameObject.transform.position;
                     condition=true;
                     GetComponentInParent<DoorManager>().TestCondition();

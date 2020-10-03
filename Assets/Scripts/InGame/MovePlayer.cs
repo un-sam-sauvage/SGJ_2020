@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovePlayer : MonoBehaviour
 {
@@ -12,12 +13,15 @@ public class MovePlayer : MonoBehaviour
     private Rigidbody2D rb;
     public bool _gotObject;
     public GameObject objectgrabbed;
+
+public string scene;
     // Start is called before the first frame update
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         objectWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x/2;
         objectHeight = transform.GetComponent<SpriteRenderer>().bounds.size.y/2;
+        scene = SceneManager.GetActiveScene().name;
     }
 
     // Update is called once per frame
@@ -30,6 +34,10 @@ public class MovePlayer : MonoBehaviour
         viewPos.x= Mathf.Clamp(viewPos.x, screenBounds.x*-1+ objectWidth, screenBounds.x- objectWidth);
         viewPos.y= Mathf.Clamp(viewPos.y, screenBounds.y*-1+ objectHeight, screenBounds.y- objectHeight);
         transform.position= viewPos;
+
+        if(Input.GetButtonDown("Restart")){
+            SceneManager.LoadScene(scene);
+        }
 //pick n drop
         //pick
         if (Input.GetButtonDown("Use") && !_gotObject && objectgrabbed!=null){
