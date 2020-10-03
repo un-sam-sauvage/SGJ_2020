@@ -8,8 +8,7 @@ public class DoorManager : MonoBehaviour
     public List<GameObject> door2;
     int nbConditionGood;
     public List<string> keys;
-    public List<string> keys2;
-    public bool conditionAnd,conditionOr,conditionNot;
+    public bool conditionAnd,conditionOr;
     [HideInInspector]
     public int index;
 
