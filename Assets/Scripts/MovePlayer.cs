@@ -31,12 +31,14 @@ public class MovePlayer : MonoBehaviour
         viewPos.y= Mathf.Clamp(viewPos.y, screenBounds.y*-1+ objectHeight, screenBounds.y- objectHeight);
         transform.position= viewPos;
 //pick n drop
+        //pick
         if (Input.GetButtonDown("Use") && !_gotObject && objectgrabbed!=null){
             objectgrabbed.gameObject.GetComponent<BoxCollider2D>().enabled=false;
             objectgrabbed.transform.SetParent(gameObject.transform);
             objectgrabbed.transform.position = gameObject.transform.position;
             _gotObject=true;
         }
+        //drop
         else if(Input.GetButtonDown("Use") && _gotObject){
             objectgrabbed.GetComponent<BoxCollider2D>().enabled = true;
             objectgrabbed.transform.parent = null;
