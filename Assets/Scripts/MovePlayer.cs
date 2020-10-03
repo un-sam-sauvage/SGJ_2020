@@ -42,7 +42,7 @@ public class MovePlayer : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.tag == "Obstacle"){
+        if(other.gameObject.tag == "Obstacle" && !_gotObject){
             objectgrabbed = other.gameObject;
         }
     }
