@@ -60,4 +60,10 @@ public void Stage13(){
 public void Stage14(){
     SceneManager.LoadScene(14);
 }
+public void Stage15(){
+    SceneManager.LoadScene(15);
+}
+public void Stage16(){
+    SceneManager.LoadScene(16);
+}
 }

@@ -59,15 +59,15 @@ public class AudioManager1 : MonoBehaviour
 
         if (carryObject == true)
         {
-            //    carryObj.TransitionTo(0.2f);
-            lerpLP = Mathf.Lerp(22000f, 400f, 10000f);
-            LowpassMaster.SetFloat("lowpassMaster", lerpLP);
+                carryObj.TransitionTo(0.2f);
+        //    lerpLP = Mathf.Lerp(22000f, 400f, 10000f);
+         //   LowpassMaster.SetFloat("lowpassMaster", lerpLP);
         }
         else
         {
-            //   currentLayer.TransitionTo(0.5f);
-            lerpLP = Mathf.Lerp(400f, 22000f, 10000f);
-            LowpassMaster.SetFloat("lowpassMaster", lerpLP);
+               currentLayer.TransitionTo(0.5f);
+        //    lerpLP = Mathf.Lerp(400f, 22000f, 10000f);
+         //   LowpassMaster.SetFloat("lowpassMaster", lerpLP);
         }
 
     }
