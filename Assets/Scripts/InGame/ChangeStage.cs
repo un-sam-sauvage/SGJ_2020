@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class ChangeStage : MonoBehaviour
 {
-    public string sceneToLoad;
+    public int indexLevel;
+    void Start(){
+        indexLevel = SceneManager.GetActiveScene().buildIndex;
+        indexLevel++;
+    }
     public void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Player"){
-            SceneManager.LoadScene(sceneToLoad);
+            SceneManager.LoadScene(indexLevel++);
         }
     }
 }

@@ -10,6 +10,9 @@ TagManager:
   - Door3
   - Door4
   - Door5
+  - Door6
+  - Door7
+  - Door8
   layers:
   - Default
   - TransparentFX

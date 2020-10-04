@@ -61,7 +61,7 @@ public class AudioManager5 : MonoBehaviour
 
         if (doorOpen == 0) // && doorOpen2 == 1 && doorOpen3 == 1)
         {
-            layer2.TransitionTo(.1f);
+            layer2.TransitionTo(.2f);
             currentLayer = layer2;
          }
 
@@ -71,7 +71,7 @@ public class AudioManager5 : MonoBehaviour
 
         if (doorOpen2 == 0)
         {
-            layer4.TransitionTo(.1f);
+            layer4.TransitionTo(.2f);
             currentLayer = layer4;
         }
 
@@ -80,7 +80,7 @@ public class AudioManager5 : MonoBehaviour
 
         if (doorOpen3 == 0) // && doorOpen2 == 1 && doorOpen == 1)
         {
-            layer5.TransitionTo(.1f);
+            layer5.TransitionTo(.2f);
             currentLayer = layer5;
         }
 
@@ -89,7 +89,7 @@ public class AudioManager5 : MonoBehaviour
 
         if (doorOpen4 == 0) // && doorOpen2 == 1 && doorOpen == 1)
         {
-            layer6.TransitionTo(.1f);
+            layer6.TransitionTo(.2f);
             currentLayer = layer6;
         }
 
@@ -98,7 +98,7 @@ public class AudioManager5 : MonoBehaviour
 
         if (doorOpen5 == 0) // && doorOpen2 == 1 && doorOpen == 1)
         {
-            layer8.TransitionTo(.1f);
+            layer8.TransitionTo(.2f);
             currentLayer = layer8;
         }
 

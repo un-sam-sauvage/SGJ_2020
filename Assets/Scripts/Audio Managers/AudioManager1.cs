@@ -49,7 +49,7 @@ public class AudioManager1 : MonoBehaviour
 
         if (doorOpen == 0)
         {
-            layer8.TransitionTo(1f);
+            layer8.TransitionTo(.2f);
             currentLayer = layer8;
          }
 
